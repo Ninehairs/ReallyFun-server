@@ -9,4 +9,8 @@ public interface IUserService {
     User login(String name, String password);
 
 
+    void updateAvatar(Integer id, String avatar);
+
+    String getAvatarById(Integer id);
+
 }
