@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.reallyfun.server.mapper.IGameMapper">
+    <!-- 插⼊数据：Integer insert(Game game) -->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_game (id,user_id,title,intro,tutorial,entry,source,thumb,is_hidden,rating,created_user,created_time,modified_user,modified_time)
+        VALUES (#{id}, #{userId}, #{title},#{intro},#{tutorial},#{entry},#{source},#{thumb},#{isHidden},#{rating},
+                #{createdUser}, #{createdTime}, #{modifiedUser}, #{modifiedTime})
+    </insert>
+
+
+    <!-- 根据eid删除数据：Example deleteByEid(Integer eid) -->
+    <delete id="deleteByEid">
+        DELETE
+        FROM t_example
+        WHERE eid = #{eid}
+    </delete>
+    <!-- 根据eid更改数据：Integer UpdateEstrByEid(
+        @Param("eid") String eid,
+        @Param("estr") String estr) -->
+    <update id="updateEstrByEid">
+        UPDATE
+            t_example
+        SET estr          = #{dstEstr},
+            modified_user = #{example.modifiedUser},
+            modified_time = #{example.modifiedTime}
+        WHERE eid = #{example.eid}
+    </update>
+    <!-- 根据eid查询数据：Example findByEid(String eid) -->
+    <select id="findByEid" resultType="com.reallyfun.server.entity.Example">
+        SELECT *
+        FROM t_example
+        WHERE eid = #{eid}
+    </select>
+
+    <!-- 根据游戏名查询游戏数据：Game fingByTitle(String Title) -->
+    <select id="findByTitle" resultType="com.reallyfun.server.entity.Game">
+        SELECT
+            *
+        FROM
+            t_game
+        WHERE
+            title = #{title}
+    </select>
+</mapper>

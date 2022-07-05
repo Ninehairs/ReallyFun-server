@@ -9,6 +9,7 @@ import java.util.Date;
 public abstract class BaseEntity implements Serializable {
     private Integer createdUser;
     private Date createdTime;
+
     private Integer modifiedUser;
     private Date modifiedTime;
 
